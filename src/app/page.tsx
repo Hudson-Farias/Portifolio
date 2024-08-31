@@ -78,8 +78,7 @@ export default function Home() {
     <>
       <header className={`${backgroundColor.color_secondary}`}>
         <nav className='flex items-center gap-5 px-5 h-full'>
-          <a href='#about' className='text-white'>Sobre</a>
-          <a href='#projects' className='text-white'>Projetos</a>
+        {snapContainers.map((container, index) => <a href={`#${container.id}`} className={`${theme.text}`} key={`nav-${container.id}`}>{container.label}</a>)}
         </nav>
       </header>
 
@@ -88,7 +87,7 @@ export default function Home() {
         {snapContainers.map((container, index) => {
           const Component = container.children
           return (
-            <div id={container.id} className={`relative snap-center flex items-center justify-center h-full ${backgroundColor.color_primary}`} key={container.id}>
+            <div id={container.id} className={`relative snap-center flex items-center justify-center h-full ${backgroundColor.color_primary}`} key={`container-${container.id}`}>
               <Component onScreen={() => changeColor(index)} />
            </div>
           )})}
