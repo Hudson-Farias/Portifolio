@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from 'react'
 
-import About from '../components/about'
-import Projects from '../components/projects'
+import About from '../containers/about'
+import Skills from '../containers/skills'
+import Projects from '../containers/projects'
 
 import styles from '@/styles/scrollbar.module.sass'
-
 interface ColorsI {
   text: string,
   color_primary: string,
@@ -54,6 +54,11 @@ export default function Home() {
       children: About
     },
     {
+      id: 'skills',
+      label: 'Skills',
+      children: Skills
+    },
+    {
       id: 'projects',
       label: 'Projetos',
       children: Projects
@@ -88,7 +93,7 @@ export default function Home() {
         {snapContainers.map((container, index) => {
           const Component = container.children
           return (
-            <div id={container.id} className={`relative snap-center flex items-center justify-center h-full ${colors.color_primary}`} key={`container-${container.id}`}>
+            <div id={container.id} className={`snap-center flex items-center justify-center h-full ${colors.color_primary}`} key={`container-${container.id}`}>
               <Component onScreen={() => setPos(index)} colors={colors} />
             </div>
           )
