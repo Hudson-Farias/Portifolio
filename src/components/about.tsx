@@ -49,7 +49,7 @@ export default function About({ onScreen, colors }: { onScreen: () => void, colo
     return (
         <div ref={elementRef} className={`flex flex-col w-9/12 md:w-6/12 h-20 md:h-36 ${colors.text}`}>
             <div className='flex content-end gap-2'>
-                <h1 className='font-mono text-4xl md:text-8xl'>Hudson</h1>
+                <h1 className='text-4xl md:text-8xl'>Hudson</h1>
                 <a className='ml-10' href='https://www.linkedin.com/in/hudsonfarias/' target='_blank'>
                     <i>
                         <svg width='100' height='100' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>

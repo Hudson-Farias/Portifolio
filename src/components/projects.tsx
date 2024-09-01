@@ -14,7 +14,7 @@ export default function About({ onScreen, colors }: { onScreen: () => void, colo
     }, []);
 
     return (
-        <div ref={elementRef} className={`text-center font-mono ${colors.text}`}>
+        <div ref={elementRef} className={`text-center ${colors.text}`}>
         Em breve
         </div>
     );
