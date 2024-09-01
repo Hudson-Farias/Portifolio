@@ -1,10 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-import {
-    Card,
-    CardHeader,
-    CardContent
-} from "@/components/ui/card"
+import { Card, CardHeader, CardContent } from "@/components/ui/card"
 
 const data_skills = [
     {
@@ -52,11 +48,11 @@ export default function Skills({ onScreen, colors }: { onScreen: () => void, col
 
     return (
         <div ref={elementRef} className={`grid grid-cols-3 gap-20 ${colors.text}`}>
-            {data_skills.map(skill => (
-                <Card className={`w-96 h-64 px-7 py-3 ${colors.color_secondary}`}>
+            {data_skills.map((skill, i) => (
+                <Card className={`w-96 h-64 px-7 py-3 ${colors.color_secondary}`} key={`skill-${i}`}>
                     <CardHeader className='flex items-center'>{skill.icon}</CardHeader>
                     <CardContent className='flex flex-col justify-start justify-items-start'>
-                        {skill.frameworks.map(framework => <span>- {framework}</span>)}
+                        {skill.frameworks.map((framework, ii) => <span key={`frameworks-${ii}`}>- {framework}</span>)}
                     </CardContent>
                 </Card>
             ))}
