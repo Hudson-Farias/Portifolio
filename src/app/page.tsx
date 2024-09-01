@@ -3,9 +3,8 @@
 import React, { useRef, useEffect, useState } from 'react'
 
 import About from '../components/about'
-import Test from '../components/test'
+import Projects from '../components/projects'
 
-// import Projects from '@/components/projects'
 // import Contact from '@/components/contact'
 
 import styles from '@/styles/scrollbar.module.sass'
@@ -55,24 +54,12 @@ export default function Home() {
       id: 'about',
       label: 'Sobre',
       children: About
-      // children: <About />
     },
     {
       id: 'projects',
       label: 'Projetos',
-      children: Test
-    },
-    {
-      id: 'test',
-      label: 'Test',
-      children: Test
-    },
-    // {
-    //   id: 'contact',
-    //   label: 'Contato',
-    //   // children: <Contact urls={data.urls} />
-    //   children: <p>OLA MUNDO</p>
-    // },
+      children: Projects
+    }
   ]
 
   return (

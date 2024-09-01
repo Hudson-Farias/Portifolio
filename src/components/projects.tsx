@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-export default function Test({onScreen}: {onScreen: () => void}) {
+export default function About({ onScreen, colors }: { onScreen: () => void, colors: any }) {
     const elementRef = useRef(null);
 
     useEffect(() => {
@@ -14,9 +14,8 @@ export default function Test({onScreen}: {onScreen: () => void}) {
     }, []);
 
     return (
-        <div>
-            <div ref={elementRef} style={{ height: '100px', background: 'lightblue' }}>
-            </div>
+        <div ref={elementRef} className={`text-center font-mono ${colors.text}`}>
+        Em breve
         </div>
     );
 }
