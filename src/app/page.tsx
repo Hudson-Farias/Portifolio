@@ -26,6 +26,24 @@ const theme = {
   },
 }
 
+const snapContainers = [
+  {
+    id: 'about',
+    label: 'Sobre',
+    children: About
+  },
+  {
+    id: 'skills',
+    label: 'Skills',
+    children: Skills
+  },
+  {
+    id: 'projects',
+    label: 'Projetos',
+    children: Projects
+  }
+]
+
 export default function Home() {
   const [theming, setTheming] = useState<'dark' | 'light'>('dark')
   const [pos, setPos] = useState<number>(0)
@@ -46,24 +64,6 @@ export default function Home() {
     }
     setColors(_colors)
   }, [theming, pos])
-
-  const snapContainers = [
-    {
-      id: 'about',
-      label: 'Sobre',
-      children: About
-    },
-    {
-      id: 'skills',
-      label: 'Skills',
-      children: Skills
-    },
-    {
-      id: 'projects',
-      label: 'Projetos',
-      children: Projects
-    }
-  ]
 
   return (
     <>
