@@ -22,12 +22,6 @@ export default function Home() {
       ref: useRef(null)
     },
     {
-      id: 'dsadada',
-      label: 'dsadada',
-      children: Skills,
-      ref: useRef(null)
-    },
-    {
       id: 'skills',
       label: 'Skills',
       children: Skills,
