@@ -33,8 +33,6 @@ function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNod
 
 
 export function LayoutClient({ children }: Readonly<{ children: React.ReactNode; }>) {
-  const { bgPrimaryColor, bgSecondaryColor, changeColors } = useColors();
-
   return (
     <ColorProvider>
       <LayoutClientComponent>

@@ -1,6 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react'
+'use client'
 
-export default function About({ onScreen }: { onScreen: () => void }) {
+import React, { forwardRef, useEffect, useState } from 'react'
+
+const About = forwardRef<HTMLDivElement, {}>(({ }, ref) => {
     const roles = ['Software Developer', 'Fullstack Developer', 'Backend Developer', 'Frontend Developer', 'Devops']
 
     const [typedText, setTypedText] = useState(roles[0])
@@ -34,20 +36,8 @@ export default function About({ onScreen }: { onScreen: () => void }) {
         return () => clearTimeout(timeoutId)
     }, [roles, currentIndex, textToType, typedText, isDeleting])
 
-    const elementRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => { entry.isIntersecting ? onScreen() : undefined },
-            { threshold: 1.0 }
-        )
-
-        elementRef.current ? observer.observe(elementRef.current) : undefined
-        return () => elementRef.current ? observer.unobserve(elementRef.current) : undefined
-    }, []);
-
     return (
-        <div ref={elementRef} className={`flex flex-col w-9/12 md:w-6/12 h-20 md:h-36`}>
+        <div ref={ref} className={`flex flex-col w-9/12 md:w-6/12 h-20 md:h-36`}>
             <div className='flex content-end gap-2'>
                 <h1 className='text-4xl md:text-8xl'>Hudson</h1>
                 <a className='ml-10' href='https://www.linkedin.com/in/hudsonfarias/' target='_blank'>
@@ -68,4 +58,7 @@ export default function About({ onScreen }: { onScreen: () => void }) {
             <p className='text-2xl md:text-5xl min-h-16-700'>{typedText}</p>
         </div>
     )
-}
+})
+
+
+export default About

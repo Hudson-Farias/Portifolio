@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import About from '@/containers/about'
 import Skills from '@/containers/skills'
@@ -13,31 +13,37 @@ import styles from '@/styles/scrollbar.module.sass'
 import { useColors } from '@/contexts/colors';
 
 
-const snapContainers = [
-  {
-    id: 'about',
-    label: 'Sobre',
-    children: About
-  },
-  {
-    id: 'skills',
-    label: 'Skills',
-    children: Skills
-  },
-  {
-    id: 'projects',
-    label: 'Projetos',
-    children: Projects
-  }
-]
-
-
 export default function Home() {
+  const snapContainers = [
+    {
+      id: 'about',
+      label: 'Sobre',
+      children: About,
+      ref: useRef(null)
+    },
+    {
+      id: 'dsadada',
+      label: 'dsadada',
+      children: Skills,
+      ref: useRef(null)
+    },
+    {
+      id: 'skills',
+      label: 'Skills',
+      children: Skills,
+      ref: useRef(null)
+    },
+    {
+      id: 'projects',
+      label: 'Projetos',
+      children: Projects,
+      ref: useRef(null)
+    }
+  ]
+
+
   const { bgPrimaryColor, bgSecondaryColor, changeColors } = useColors();
-
   const [isDarkMode, setDarkMode] = useState(true)
-  const [pos, setPos] = useState<number>(0)
-
 
   useEffect(() => {
     const element = document.querySelector('html');
@@ -61,7 +67,22 @@ export default function Home() {
   }
 
 
-  useEffect(() => { changeColors() }, [pos])
+  const observers: { observer: IntersectionObserver, ref: any }[] = []
+  useEffect(() => {
+    snapContainers.forEach((container) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          entry.isIntersecting  ? changeColors() : undefined
+        },
+        { threshold: 1.0 }
+      )
+
+      container.ref.current ? observer.observe(container.ref.current) : undefined
+      observers.push({ observer: observer, ref: container.ref.current })
+    })
+
+    return () => observers.forEach((observer) => observer.ref ? observer.observer.unobserve(observer.ref) : undefined)
+  }, []);
 
 
   return (
@@ -79,11 +100,11 @@ export default function Home() {
       </header>
 
       <div className={`${styles.scrollbar} snap-mandatory snap-y overflow-auto h-full`}>
-        {snapContainers.map((container, index) => {
+        {snapContainers.map((container) => {
           const Component = container.children
           return (
             <div id={container.id} className={`snap-center flex items-center justify-center h-full ${bgPrimaryColor}`} key={`container-${container.id}`}>
-              <Component onScreen={() => setPos(index)} />
+              <Component ref={container.ref} />
             </div>
           )
         })}

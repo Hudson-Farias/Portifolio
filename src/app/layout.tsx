@@ -25,6 +25,8 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
           {children}
         </LayoutClient>
 
+        {/* <div className='bg-primary-color dark:bg-primary-color bg-secondary-color dark:bg-secondary-color'></div> */}
+
       </body>
     </html>
   );

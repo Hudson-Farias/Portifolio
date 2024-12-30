@@ -7,11 +7,18 @@ interface ColorsI {
 }
 
 
-const bgPrimaryColor = 'bg-primary-color dark:bg-primary-color'
-const bgSecondaryColor = 'bg-secondary-color dark:bg-secondary-color'
+const bgPrimaryColor: string | null = 'bg-primary-color dark:bg-primary-color'
+const bgSecondaryColor: string | null = 'bg-secondary-color dark:bg-secondary-color'
 
 
-const ColorContext = createContext({
+interface ColorContextI {
+    bgPrimaryColor: string,
+    bgSecondaryColor: string,
+    changeColors: () => void
+}
+
+
+const ColorContext = createContext<ColorContextI>({
     bgPrimaryColor, bgSecondaryColor,
     changeColors: () => { }
 })
@@ -21,9 +28,9 @@ export const useColors = () => {
     return useContext(ColorContext)
 }
 
-
 export const ColorProvider = ({ children }: { children: React.ReactNode }) => {
     const [colors, setColors] = useState<ColorsI>({ bgPrimaryColor, bgSecondaryColor })
+
 
     const changeColors = () => {
         setColors(prev => ({
