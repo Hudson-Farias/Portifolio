@@ -5,6 +5,8 @@ import './globals.css';
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
+import { LayoutClient } from './layout-client'
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -12,16 +14,17 @@ export const metadata: Metadata = {
   description: 'Software developer',
 };
 
-export default function RootLayout({children, }: Readonly<{children: React.ReactNode;}>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang='pt-br'>
+    <html lang='pt-br' className='dark'>
       <body className={inter.className}>
         <Analytics />
         <SpeedInsights />
 
-        <main className='font-mono h-screen grid grid-rows-[3rem,1fr,2.5rem] overflow-hidden'>
+        <LayoutClient>
           {children}
-        </main>
+        </LayoutClient>
+
       </body>
     </html>
   );

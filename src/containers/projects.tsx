@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 
-export default function About({ onScreen, colors }: { onScreen: () => void, colors: any }) {
+export default function About({ onScreen }: { onScreen: () => void }) {
     const elementRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => { entry.isIntersecting ? onScreen() : undefined },
-            {threshold: 1.0}
+            { threshold: 1.0 }
         )
 
         elementRef.current ? observer.observe(elementRef.current) : undefined
@@ -14,8 +14,8 @@ export default function About({ onScreen, colors }: { onScreen: () => void, colo
     }, []);
 
     return (
-        <div ref={elementRef} className={`text-center ${colors.text}`}>
-        Em breve
+        <div ref={elementRef} className='text-center'>
+            Em breve
         </div>
     );
 }
