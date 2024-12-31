@@ -1,13 +1,48 @@
 'use client'
 
+import React, { useState } from 'react'
+
+import { containers } from '@/containers'
+
+import { DarkThemeIcon } from '@/icons/dark-theme'
+import { LightThemeIcon } from '@/icons/light-theme'
+
 import { ColorProvider, useColors } from '@/contexts/colors';
 
 
 function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNode; }>) {
+  const [isDarkMode, setDarkMode] = useState(true)
   const { bgSecondaryColor } = useColors();
+
+
+  const handleTheme = () => {
+    const element = document.querySelector('html');
+    if (element) {
+      if (element.classList.contains('dark')) {
+        element?.classList.remove('dark')
+        setDarkMode(false)
+        return
+      }
+
+      element?.classList.add('dark')
+    }
+    setDarkMode(true)
+  }
 
   return (
     <main className='font-mono h-screen grid grid-rows-[3rem,1fr,2.5rem] overflow-hidden text-black dark:text-white'>
+      <header className={`flex justify-between text-sm px-5 ${bgSecondaryColor}`}>
+        <nav className='flex items-center gap-5'>
+          {containers.map((container) => <a href={`#${container.id}`} key={`nav-${container.id}`}>{container.label}</a>)}
+        </nav>
+
+        <section className='flex items-center gap-5'>
+          <button onClick={handleTheme}>
+            {isDarkMode ? <DarkThemeIcon /> : <LightThemeIcon />}
+          </button>
+        </section>
+      </header>
+
       {children}
 
       <footer className={`flex justify-between items-center text-sm px-5 ${bgSecondaryColor}`}>
