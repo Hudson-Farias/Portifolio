@@ -1,5 +1,3 @@
-import { useRef } from 'react'
-
 import About from '@/containers/about'
 import Skills from '@/containers/skills'
 import Projects from '@/containers/projects'

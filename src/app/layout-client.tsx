@@ -12,8 +12,7 @@ import { ColorProvider, useColors } from '@/contexts/colors';
 
 function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNode; }>) {
   const [isDarkMode, setDarkMode] = useState(true)
-  const { bgSecondaryColor } = useColors();
-
+  const { bgPrimaryColor, bgSecondaryColor } = useColors();
 
   const handleTheme = () => {
     const element = document.querySelector('html');
@@ -30,22 +29,22 @@ function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNod
   }
 
   return (
-    <main className='font-mono h-screen grid grid-rows-[3rem,1fr,2.5rem] overflow-hidden text-black dark:text-white'>
-      <header className={`flex justify-between text-sm px-5 ${bgSecondaryColor}`}>
-        <nav className='flex items-center gap-5'>
-          {containers.map((container) => <a href={`#${container.id}`} key={`nav-${container.id}`}>{container.label}</a>)}
-        </nav>
-
-        <section className='flex items-center gap-5'>
+    <main className={`font-mono h-screen grid grid-cols-[3rem,9fr] grid-rows-[9fr,2em] overflow-hidden text-black dark:text-white ${bgPrimaryColor}`}>
+      <aside className={`col-start-1 col-end-2 row-start-1 row-end-3   flex flex-col gap-14 text-sm px-5 pt-8 ${bgSecondaryColor}`}>
+        <section className='flex items-center justify-center gap-10'>
           <button onClick={handleTheme}>
             {isDarkMode ? <DarkThemeIcon /> : <LightThemeIcon />}
           </button>
         </section>
-      </header>
+
+        <nav className='flex flex-col gap-20'>
+          {containers.map((container) => <a className='-rotate-90' href={`#${container.id}`} key={`nav-${container.id}`}>{container.label}</a>)}
+        </nav>
+      </aside>
 
       {children}
 
-      <footer className={`flex justify-between items-center text-sm px-5 ${bgSecondaryColor}`}>
+      <footer className={`col-start-2 col-end-3 row-start-2 row-end-3 flex justify-between items-center text-sm px-5 ${bgSecondaryColor}`}>
         <span>© Hudson Farias 2021 - {new Date().getFullYear()}</span>
 
         <nav className={`flex items-center gap-5`}>
