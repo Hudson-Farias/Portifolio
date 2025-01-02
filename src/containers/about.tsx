@@ -17,7 +17,7 @@ const About = forwardRef<HTMLDivElement, {}>(({ }, ref) => {
         const handleTyping = () => {
             if (!isDeleting) {
                 if (currentIndex === textToType.length) {
-                    setTimeout(() => setIsDeleting(true), 3000)
+                    setTimeout(() => setIsDeleting(true), 10000)
                     return
                 }
                 setTypedText(prevTypedText => prevTypedText + textToType[currentIndex])
@@ -41,15 +41,7 @@ const About = forwardRef<HTMLDivElement, {}>(({ }, ref) => {
 
     return (
         <div ref={ref} className={`flex flex-col w-9/12 md:w-6/12 h-20 md:h-36`}>
-            <div className='flex content-end gap-2'>
-                <h1 className='text-4xl md:text-8xl'>Hudson</h1>
-                <a className='ml-10' href='https://www.linkedin.com/in/hudsonfarias/' target='_blank'>
-                    <LinkedinIcon />
-                </a>
-                <a href='https://github.com/Hudson-Farias' target='_blank'>
-                    <GitHubIcon />
-                </a>
-            </div>
+            <h1 className='text-4xl md:text-8xl'>Hudson Farias</h1>
             <p className='text-2xl md:text-5xl min-h-16-700'>{typedText}</p>
         </div>
     )
