@@ -2,9 +2,6 @@
 
 import React, { forwardRef, useEffect, useState } from 'react'
 
-import { LinkedinIcon } from '@/icons/linkedin'
-import { GitHubIcon } from '@/icons/github'
-
 const About = forwardRef<HTMLDivElement, {}>(({ }, ref) => {
     const roles = ['Software Developer', 'Fullstack Developer', 'Backend Developer', 'Frontend Developer', 'Devops']
 
@@ -41,8 +38,8 @@ const About = forwardRef<HTMLDivElement, {}>(({ }, ref) => {
 
     return (
         <div ref={ref} className={`flex flex-col w-9/12 md:w-6/12 h-20 md:h-36`}>
-            <h1 className='text-4xl md:text-8xl'>Hudson Farias</h1>
-            <p className='text-2xl md:text-5xl min-h-16-700'>{typedText}</p>
+            <h1 className='text-2xl md:text-4xl min-h-16-700'>Hudson Farias</h1>
+            <p className='text-3xl md:text-6xl'>{typedText}</p>
         </div>
     )
 })
