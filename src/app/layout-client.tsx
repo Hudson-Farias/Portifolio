@@ -14,6 +14,8 @@ import { GitHubIcon } from '@/icons/github'
 
 import { ColorProvider, useColors } from '@/contexts/colors';
 
+import { linkedin_url, discord_url, whatsapp_url, github_url } from '@/data/social.json'
+
 
 function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNode; }>) {
   const [isDarkMode, setDarkMode] = useState(true)
@@ -49,10 +51,10 @@ function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNod
         </div>
 
         <div className='flex flex-col items-center gap-8'>
-          <a href='https://www.linkedin.com/in/hudsonfarias/' target='_blank'><LinkedinIcon height={18} width={18} /></a>
-          <a href='https://discord.com/users/1127594477536694332' target='_blank'><DiscordIcon height={18} width={18} /></a>
-          <a href='https://wa.me/5521995021812' target='_blank'><WhatsAppIcon height={16} width={16} /></a>
-          <a href='https://github.com/Hudson-Farias' target='_blank'><GitHubIcon height={18} width={18} /></a>
+          <a href={linkedin_url} target='_blank'><LinkedinIcon height={18} width={18} /></a>
+          <a href={discord_url} target='_blank'><DiscordIcon height={18} width={18} /></a>
+          <a href={whatsapp_url} target='_blank'><WhatsAppIcon height={16} width={16} /></a>
+          <a href={github_url} target='_blank'><GitHubIcon height={18} width={18} /></a>
         </div>
 
       </aside>
