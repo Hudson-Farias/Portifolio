@@ -37,7 +37,7 @@ function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNod
 
   return (
     <main className={`font-mono h-screen grid grid-cols-[3rem,9fr] overflow-hidden text-black dark:text-white ${bgPrimaryColor}`}>
-      <aside className={`col-start-1 col-end-2 flex flex-col justify-between text-sm px-5 py-8 rounded-r-2xl border-r border-gray-700 ${bgSecondaryColor}`}>
+      <aside className={`col-start-1 col-end-2 flex flex-col justify-between text-sm px-5 py-8 rounded-r-md border-r border-gray-700 ${bgSecondaryColor}`}>
 
         <div className='flex flex-col items-center gap-14'>
           <section className='flex items-center justify-center gap-10'>
