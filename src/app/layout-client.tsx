@@ -46,7 +46,7 @@ function LayoutClientComponent({ children }: Readonly<{ children: React.ReactNod
             </button>
           </section>
           <nav className='flex flex-col gap-20'>
-            {containers.map((container) => <a className='-rotate-90' href={`#${container.id}`} key={`nav-${container.id}`}>{container.label}</a>)}
+            {containers.map((container) => <a className='-rotate-90' href={container.redirect_path} key={`nav-${container.id}`}>{container.label}</a>)}
           </nav>
         </div>
 
